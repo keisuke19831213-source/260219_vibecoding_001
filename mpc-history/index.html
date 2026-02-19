@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artists × AKAI MPC History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fff;
+  --bg-alt: #f7f6f3;
+  --text: #1a1a1a;
+  --text-sub: #666;
+  --text-light: #999;
+  --accent: #cc1111;
+  --line: #e0ddd6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--accent); width: 0%; z-index: 1000;
+  transition: width .1s linear;
+}
+
+/* ── STICKY NAV ── */
+nav {
+  position: fixed; top: 3px; left: 0; right: 0;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  z-index: 900; padding: 0 24px;
+  display: flex; align-items: center;
+  height: 52px;
+}
+.nav-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; font-size: 13px;
+  letter-spacing: 3px; color: var(--text);
+  text-decoration: none; margin-right: auto;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a {
+  font-size: 11px; color: var(--text-sub);
+  text-decoration: none; padding: 6px 10px;
+  border-radius: 4px; transition: all .2s;
+  white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--accent); background: #fef2f2;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: #0d0d0d;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 24px 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, #2a0808 0%, #0d0d0d 70%);
+}
+.hero-photo {
+  position: relative; z-index: 1;
+  width: min(580px, 90vw);
+  margin-bottom: 48px;
+  animation: floatY 4s ease-in-out infinite;
+  border-radius: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero-eyebrow {
+  position: relative; z-index: 1;
+  font-size: 11px; letter-spacing: 5px;
+  color: var(--accent); font-weight: 500;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.hero h1 {
+  position: relative; z-index: 1;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(32px, 6vw, 64px);
+  color: #fff; line-height: 1.25;
+  margin-bottom: 24px;
+}
+.hero h1 .x-mark { color: var(--accent); }
+.hero-sub {
+  position: relative; z-index: 1;
+  font-size: clamp(13px, 1.8vw, 16px);
+  color: #aaa; max-width: 560px; line-height: 1.8;
+  margin-bottom: 48px;
+}
+.hero-date {
+  position: relative; z-index: 1;
+  font-size: 11px; color: #555; letter-spacing: 2px;
+}
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%); z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  color: #666; font-size: 10px; letter-spacing: 3px;
+}
+.hero-scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, #666);
+  animation: lineGrow 1.5s ease infinite;
+}
+@keyframes lineGrow {
+  0% { height: 0; opacity: 0; }
+  50% { height: 48px; opacity: 1; }
+  100% { height: 48px; opacity: 0; }
+}
+
+/* ── INTRO ── */
+.intro {
+  max-width: 680px; margin: 80px auto;
+  padding: 0 24px; text-align: center;
+}
+.intro h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  margin-bottom: 20px; line-height: 1.5;
+}
+.intro p { color: var(--text-sub); font-size: 15px; line-height: 1.9; }
+
+/* ── DECADE DIVIDER ── */
+.decade-section { position: relative; }
+.decade-divider {
+  position: relative; padding: 60px 24px 20px;
+  overflow: hidden;
+}
+.decade-divider::after {
+  content: '';
+  position: absolute; bottom: 0; left: 24px; right: 24px;
+  height: 1px; background: var(--line);
+}
+.decade-bg-num {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(80px, 16vw, 180px);
+  font-weight: 700; color: rgba(0,0,0,.04);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: -4px;
+}
+.decade-label {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 16px;
+}
+.decade-label .decade-num {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 700; color: var(--text);
+  letter-spacing: -2px;
+}
+.decade-label .decade-desc {
+  font-size: 13px; color: var(--text-sub);
+  max-width: 300px; line-height: 1.6;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  max-width: 1100px; margin: 0 auto;
+  padding: 40px 24px 60px;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: var(--line);
+  transform: translateX(-50%);
+}
+
+/* ── MODEL CARD ── */
+.model-card {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0; margin-bottom: 80px;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.model-card.visible { opacity: 1; transform: translateY(0); }
+
+.model-card:nth-child(even) .card-left  { order: 3; }
+.model-card:nth-child(even) .card-center { order: 2; }
+.model-card:nth-child(even) .card-right { order: 1; }
+
+.card-left, .card-right { padding: 0 32px; }
+.card-center {
+  display: flex; flex-direction: column;
+  align-items: center; position: relative; z-index: 1;
+}
+.card-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); border: 3px solid #fff;
+  box-shadow: 0 0 0 2px var(--accent);
+  flex-shrink: 0; margin-top: 28px;
+}
+.card-line { flex: 1; width: 1px; background: var(--line); margin-top: 4px; }
+
+/* Photo container */
+.mpc-photo-wrap {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+}
+.mpc-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform .4s ease;
+}
+.mpc-photo-wrap:hover img { transform: scale(1.03); }
+
+/* Photo credit */
+.photo-credit {
+  font-size: 10px; color: var(--text-light);
+  margin-bottom: 16px; letter-spacing: .5px;
+}
+.photo-credit a { color: var(--text-light); }
+
+.card-year {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 700; color: var(--text);
+  letter-spacing: -2px; line-height: 1;
+  margin-bottom: 4px;
+}
+.card-model-name {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700; color: var(--accent);
+  letter-spacing: 1px; margin-bottom: 8px;
+}
+.card-tagline {
+  font-size: 13px; color: var(--text-sub);
+  font-style: italic; margin-bottom: 16px; line-height: 1.5;
+}
+.card-desc {
+  font-size: 14px; line-height: 1.9;
+  color: var(--text-sub); margin-bottom: 20px;
+}
+.card-specs {
+  background: var(--bg-alt);
+  border-radius: 8px; padding: 16px;
+  margin-bottom: 20px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+.spec-item label {
+  font-size: 10px; color: var(--text-light);
+  letter-spacing: 1px; text-transform: uppercase;
+  display: block; margin-bottom: 2px;
+}
+.spec-item span {
+  font-size: 12px; color: var(--text);
+  font-weight: 500; font-family: 'Inter', sans-serif;
+}
+.card-artists { border-top: 1px solid var(--line); padding-top: 16px; }
+.card-artists-label {
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--text-light); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.artist-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.artist-tag {
+  font-size: 11px; padding: 3px 10px;
+  background: #f0eded; border-radius: 20px;
+  color: var(--text); font-weight: 500;
+  transition: all .2s;
+}
+.artist-tag:hover { background: var(--accent); color: #fff; }
+
+.model-card:nth-child(even) .card-right { text-align: right; }
+.model-card:nth-child(even) .card-right .artist-tags { justify-content: flex-end; }
+
+/* ── HIGHLIGHT CARD ── */
+.highlight-card {
+  background: #0d0d0d; color: #fff;
+  padding: 60px 48px; border-radius: 12px;
+  margin: 0 24px 80px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.highlight-card.visible { opacity: 1; transform: translateY(0); }
+.hl-eyebrow {
+  font-size: 10px; letter-spacing: 3px;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+}
+.hl-year {
+  font-size: 72px; font-weight: 700;
+  color: rgba(255,255,255,.06);
+  font-family: 'Inter', sans-serif;
+  line-height: 1; margin-bottom: -20px; letter-spacing: -4px;
+}
+.hl-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700; color: #fff;
+  letter-spacing: -1px; margin-bottom: 16px;
+}
+.hl-desc { color: #aaa; font-size: 14px; line-height: 1.9; margin-bottom: 24px; }
+.hl-artists { display: flex; flex-wrap: wrap; gap: 8px; }
+.hl-artist {
+  font-size: 12px; padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px; color: #ccc; transition: all .2s;
+}
+.hl-artist:hover { border-color: var(--accent); color: var(--accent); }
+
+.hl-photo-wrap {
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  aspect-ratio: 4/3;
+}
+.hl-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0d0d0d; color: #666;
+  padding: 60px 24px 40px; text-align: center;
+}
+.footer-logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 4px; color: #fff; margin-bottom: 8px;
+}
+.footer-logo span { color: var(--accent); }
+footer p { font-size: 12px; line-height: 1.8; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .timeline::before { left: 20px; }
+  .model-card {
+    grid-template-columns: 40px 1fr;
+  }
+  .model-card .card-left,
+  .model-card .card-right,
+  .model-card:nth-child(even) .card-left,
+  .model-card:nth-child(even) .card-right {
+    order: unset; grid-column: 2; text-align: left;
+  }
+  .model-card .card-center,
+  .model-card:nth-child(even) .card-center {
+    order: unset; grid-column: 1; grid-row: 1 / 3;
+  }
+  .model-card:nth-child(even) .card-right .artist-tags { justify-content: flex-start; }
+  .card-dot { margin-top: 32px; }
+  .highlight-card { grid-template-columns: 1fr; padding: 40px 24px; }
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <a class="nav-logo" href="#"><span>AKAI</span> MPC HISTORY</a>
+  <ul class="nav-links">
+    <li><a href="#s1980">1980s</a></li>
+    <li><a href="#s1990">1990s</a></li>
+    <li><a href="#s2000">2000s</a></li>
+    <li><a href="#s2010">2010s</a></li>
+    <li><a href="#s2020">2020s</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Music Production Center</p>
+  <img class="hero-photo" src="img/mpc-live3.jpg" alt="AKAI MPC Live III">
+  <h1>Artists <span class="x-mark">×</span> AKAI MPC History</h1>
+  <p class="hero-sub">1988年の誕生から現在まで——サンプラーとビートメイキングの革命を変えた、MPCとアーティストたちの軌跡。</p>
+  <p class="hero-date">1988 — 2025</p>
+  <div class="hero-scroll">
+    SCROLL
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="intro">
+  <h2>ヒップホップを変えた「箱」</h2>
+  <p>AKAI MPC（Music Production Center）は、1988年にロジャー・リンとAKAIプロフェッショナルが共同開発したサンプラー＆シーケンサー。感圧式パッドでリズムを叩き、サンプリングした音を組み合わせる独自のワークフローは、ヒップホップ、R&B、エレクトロニック・ミュージックのプロデューサーたちに革命をもたらした。</p>
+</div>
+
+<!-- ═══════════════════ 1980s ═══════════════════ -->
+<div class="decade-section" id="s1980">
+  <div class="decade-divider">
+    <div class="decade-bg-num">1980s</div>
+    <div class="decade-label">
+      <span class="decade-num">1980s</span>
+      <span class="decade-desc">革命の幕開け。ロジャー・リンとAKAIが生み出した伝説の始まり。</span>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <!-- MPC60 1988 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">1988</div>
+        <div class="card-model-name">MPC60</div>
+        <div class="card-tagline">"すべての始まり" — The Original</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc60.jpg" alt="AKAI MPC60 (1988)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC60.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">ロジャー・リン（LinnDrum設計者）と岡本務（AKAI）が共同開発。12ビット・サンプリング、4×4の感圧パッドを搭載し、現代のビートメイクの原型を確立。フロッピーディスクでデータを保存し、63,000ノートのシーケンサーを内蔵。定価約5,000ドルながら、スタジオからストリートまで爆発的に普及した。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>解像度</label><span>12-bit</span></div>
+          <div class="spec-item"><label>パッド</label><span>4×4 感圧式</span></div>
+          <div class="spec-item"><label>ボイス数</label><span>最大32</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>3.5" FDD</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Marley Marl</span>
+            <span class="artist-tag">DJ Premier</span>
+            <span class="artist-tag">Pete Rock</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+  </div><!-- /timeline 1980s -->
+</div>
+
+<!-- ═══════════════════ 1990s ═══════════════════ -->
+<div class="decade-section" id="s1990">
+  <div class="decade-divider">
+    <div class="decade-bg-num">1990s</div>
+    <div class="decade-label">
+      <span class="decade-num">1990s</span>
+      <span class="decade-desc">ゴールデンエラ。MPCがヒップホップの標準機材として確立される黄金時代。</span>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <!-- MPC3000 1994 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">1994</div>
+        <div class="card-model-name">MPC3000</div>
+        <div class="card-tagline">"業界標準の確立" — The Industry Standard</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc3000.jpg" alt="AKAI MPC3000 (1994)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC3000.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">16ビット・ステレオ・サンプリングを初めて搭載し、音質が劇的に向上。32ボイス、32トラックのシーケンサーを備え、プロスタジオの標準機材となった。DJ Premier、Pete Rock、RZAらがこの機種で多くの名作を生み出し、ヒップホップのゴールデンエラを象徴する機器となった。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>解像度</label><span>16-bit ステレオ</span></div>
+          <div class="spec-item"><label>ボイス数</label><span>32</span></div>
+          <div class="spec-item"><label>トラック</label><span>32</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>SCSI / ZIP</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">DJ Premier</span>
+            <span class="artist-tag">Pete Rock</span>
+            <span class="artist-tag">RZA</span>
+            <span class="artist-tag">Notorious B.I.G.</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC2000 1997 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">1997</div>
+        <div class="card-model-name">MPC2000</div>
+        <div class="card-tagline">"大衆化" — For Everyone</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc2000.jpg" alt="AKAI MPC2000 (1997)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC2000.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">MPC3000の機能を手頃な価格で提供。16ビット・ステレオ、32ボイスを維持しながら価格を約半額に抑え、ベッドルームプロデューサーへの普及が加速した。Kanye West、J Dilla、Dr. Dreらがこの機種でキャリアを構築。ヒップホップ・ビートの制作スタイルを世界中に広めた。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>解像度</label><span>16-bit ステレオ</span></div>
+          <div class="spec-item"><label>ボイス数</label><span>32</span></div>
+          <div class="spec-item"><label>サンプルメモリ</label><span>最大32MB</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>FDD / SCSI</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Kanye West</span>
+            <span class="artist-tag">J Dilla</span>
+            <span class="artist-tag">Dr. Dre</span>
+            <span class="artist-tag">Just Blaze</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MPC2000XL 1999 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">1999</div>
+        <div class="card-model-name">MPC2000XL</div>
+        <div class="card-tagline">"定番の完成" — The Definitive Version</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc2000xl.jpg" alt="AKAI MPC2000XL (1999)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC2000XL_front.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">MPC2000の進化版。入出力端子を強化し、最大32MBのメモリを標準搭載。JJOS（サードパーティOS）のコミュニティが形成され、現在でも使用するプロデューサーが多数存在する。「最もポピュラーなMPC」とも称され、後継機が登場した後も長年にわたり愛用された。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>解像度</label><span>16-bit ステレオ</span></div>
+          <div class="spec-item"><label>サンプルメモリ</label><span>最大32MB</span></div>
+          <div class="spec-item"><label>フィルター</label><span>レゾナントフィルター</span></div>
+          <div class="spec-item"><label>特記</label><span>JJOS対応</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Swizz Beatz</span>
+            <span class="artist-tag">Madlib</span>
+            <span class="artist-tag">Questlove</span>
+            <span class="artist-tag">Timbaland</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+  </div><!-- /timeline 1990s -->
+</div>
+
+<!-- ═══════════════════ SPOTLIGHT: J DILLA ═══════════════════ -->
+<div style="max-width:1100px; margin: 0 auto 80px; padding: 0 24px;">
+  <div class="highlight-card" data-animate>
+    <div>
+      <div class="hl-eyebrow">Spotlight Producer</div>
+      <div class="hl-year">J DILLA</div>
+      <div class="hl-title">James Dewitt Yancey<br>"Dilla"の革命</div>
+      <p class="hl-desc">デトロイト出身のJ Dilla（本名：James Dewitt Yancey）は、MPC3000とMPC2000を駆使し、クオンタイズを意図的にオフにした「人間的なズレ」を持つビートを生み出した。2006年のアルバム「Donuts」は、病床でMPCのみを使って制作されたとされ、ビートメイキングの聖典として語り継がれる。</p>
+      <div class="hl-artists">
+        <span class="hl-artist">MPC3000</span>
+        <span class="hl-artist">MPC2000</span>
+        <span class="hl-artist">Detroit Hip-Hop</span>
+        <span class="hl-artist">Neo-Soul</span>
+      </div>
+    </div>
+    <div class="hl-photo-wrap">
+      <img src="img/mpc3000.jpg" alt="AKAI MPC3000 — J Dillaが愛用" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ 2000s ═══════════════════ -->
+<div class="decade-section" id="s2000">
+  <div class="decade-divider">
+    <div class="decade-bg-num">2000s</div>
+    <div class="decade-label">
+      <span class="decade-num">2000s</span>
+      <span class="decade-desc">多様化の時代。ハイエンドからポータブルまで、ラインナップが拡充。</span>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <!-- MPC4000 2002 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2002</div>
+        <div class="card-model-name">MPC4000</div>
+        <div class="card-tagline">"フラッグシップの頂点" — The Flagship</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc4000.jpg" alt="AKAI MPC4000 (2002)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC4000_(lowres).jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">AKAIが送り出した究極のフラッグシップ。DVD-RAMストレージ、Z-planeフィルタリング、128ボイスの同時発音を誇り、プロスタジオ向けの最高峰機材として君臨した。MIDI同期の精度も向上し、大規模なライブパフォーマンスでも活用された。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>解像度</label><span>24-bit / 96kHz</span></div>
+          <div class="spec-item"><label>ボイス数</label><span>128</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>DVD-RAM</span></div>
+          <div class="spec-item"><label>フィルター</label><span>Z-plane</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">9th Wonder</span>
+            <span class="artist-tag">Alchemist</span>
+            <span class="artist-tag">Havoc</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC1000 2003 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2003</div>
+        <div class="card-model-name">MPC1000</div>
+        <div class="card-tagline">"コンパクト革命" — Compact Power</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc1000.jpg" alt="AKAI MPC1000 (2003)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC1000.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">小型・軽量ボディにMPCの核心機能を凝縮。CF（コンパクトフラッシュ）カードによる記録、USBコンピューター接続に対応し、ベッドルームプロデューサーに爆発的に普及した。JJOS2XLのインストールでさらに機能拡張でき、今なお現役で使用するプロデューサーが多い。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>記録媒体</label><span>CF カード</span></div>
+          <div class="spec-item"><label>接続</label><span>USB</span></div>
+          <div class="spec-item"><label>サイズ</label><span>コンパクト</span></div>
+          <div class="spec-item"><label>特記</label><span>JJOS2XL対応</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Flying Lotus</span>
+            <span class="artist-tag">Sa-Ra Creative Partners</span>
+            <span class="artist-tag">多くのBMプロデューサー</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MPC2500 2006 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2006</div>
+        <div class="card-model-name">MPC2500</div>
+        <div class="card-tagline">"中堅の完成形" — The Sweet Spot</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc2500.jpg" alt="AKAI MPC2500 (2006)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC2500.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">MPC2000XLの後継として登場。内蔵ハードディスクオプション、USB接続、充実したエフェクトを搭載しながら、MPC2000XLユーザーが乗り換えやすい操作感を維持。ビートメイキングの教科書とも言える操作性で、多くのプロデューサースクールでも教材として採用された。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>接続</label><span>USB</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>CF / 内蔵HDD（オプション）</span></div>
+          <div class="spec-item"><label>エフェクト</label><span>内蔵多数</span></div>
+          <div class="spec-item"><label>特記</label><span>JJOS対応</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Exile</span>
+            <span class="artist-tag">Nottz</span>
+            <span class="artist-tag">Marco Polo</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC500 2007 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2007</div>
+        <div class="card-model-name">MPC500</div>
+        <div class="card-tagline">"ポータブルの先駆け" — Beat On The Go</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc500.jpg" alt="AKAI MPC500 (2007)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC500.jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">史上最小・最軽量のMPC。単三電池4本で駆動し、外出先でのビートメイキングを可能にした先駆的存在。コンパクトながら4×4パッド、シーケンサーを搭載。電車や公園でもビートを作れるとして、新世代のプロデューサーたちの間で爆発的な人気を博した。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>電源</label><span>単三電池 × 4</span></div>
+          <div class="spec-item"><label>記録媒体</label><span>SD カード</span></div>
+          <div class="spec-item"><label>重量</label><span>約640g</span></div>
+          <div class="spec-item"><label>特記</label><span>電池駆動対応</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">新世代ビートメイカー</span>
+            <span class="artist-tag">ストリートプロデューサー</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline 2000s -->
+</div>
+
+<!-- ═══════════════════ 2010s ═══════════════════ -->
+<div class="decade-section" id="s2010">
+  <div class="decade-divider">
+    <div class="decade-bg-num">2010s</div>
+    <div class="decade-label">
+      <span class="decade-num">2010s</span>
+      <span class="decade-desc">ソフトウェア融合時代。DAWとの統合からスタンドアロン復帰まで、MPCの再定義。</span>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <!-- MPC Renaissance 2012 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2012</div>
+        <div class="card-model-name">MPC Renaissance</div>
+        <div class="card-tagline">"ハードウェアとソフトウェアの融合"</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-renaissance.jpg" alt="AKAI MPC Renaissance (2012)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC_Renaissance_-_angled_left_-_2014_NAMM_Show_(by_Matt_Vanacoro).jpg" target="_blank">Wikimedia Commons</a> / Matt Vanacoro (CC BY-SA)</p>
+        <p class="card-desc">MPCシリーズ初の「ハイブリッド」型。PCに接続して専用ソフトウェア「MPC Software」と連携する新コンセプトを採用。ハードウェアの操作感を維持しながら、DAWの柔軟性を得た。賛否両論あったが、これ以降のMPCの方向性を決定づけた転換点となった。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スタイル</label><span>PC連携ハイブリッド</span></div>
+          <div class="spec-item"><label>ソフトウェア</label><span>MPC Software付属</span></div>
+          <div class="spec-item"><label>接続</label><span>USB</span></div>
+          <div class="spec-item"><label>特記</label><span>スタンドアロン不可</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Araabmuzik</span>
+            <span class="artist-tag">DJ Jazzy Jeff</span>
+            <span class="artist-tag">Statik Selektah</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC Studio 2013 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2013</div>
+        <div class="card-model-name">MPC Studio</div>
+        <div class="card-tagline">"スリムなコントローラー"</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-studio.jpg" alt="AKAI MPC Studio (2013)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC_Studio_(front).jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">MPC Renaissanceより薄型・軽量なUSBコントローラーとして登場。旅先やラップトップとの組み合わせでの使用を想定し、MPC Software（PC必須）で動作する。持ち運び重視のクリエイターやDJプロデューサーに支持された。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スタイル</label><span>USB コントローラー</span></div>
+          <div class="spec-item"><label>ソフトウェア</label><span>MPC Software付属</span></div>
+          <div class="spec-item"><label>接続</label><span>USB（バスパワー）</span></div>
+          <div class="spec-item"><label>特記</label><span>超薄型・軽量</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">ラップトップ制作者</span>
+            <span class="artist-tag">ツアーミュージシャン</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MPC Touch 2015 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2015</div>
+        <div class="card-model-name">MPC Touch</div>
+        <div class="card-tagline">"タッチスクリーン時代へ"</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-touch.jpg" alt="AKAI MPC Touch (2015)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © Sound On Sound</p>
+        <p class="card-desc">7インチのマルチタッチスクリーンを搭載したMPC初のタッチ対応モデル。波形編集、サンプルブラウジングをタッチ操作で直感的に行えるようになった。PC必須のハイブリッドモデルだが、直感的なUIは新時代の幕開けを告げるものだった。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スクリーン</label><span>7インチ マルチタッチ</span></div>
+          <div class="spec-item"><label>スタイル</label><span>PC連携ハイブリッド</span></div>
+          <div class="spec-item"><label>接続</label><span>USB</span></div>
+          <div class="spec-item"><label>特記</label><span>タッチUI初搭載</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">現代ビートメイカー</span>
+            <span class="artist-tag">エレクトロニック系プロデューサー</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC Live 2017 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2017</div>
+        <div class="card-model-name">MPC Live</div>
+        <div class="card-tagline">"スタンドアロン復帰" — Back To Roots</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-live.jpg" alt="AKAI MPC Live (2017)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Akai_MPC_Live_(2017).jpg" target="_blank">Wikimedia Commons</a> (CC BY-SA)</p>
+        <p class="card-desc">待望のスタンドアロン復帰。PCなしで単体動作でき、内蔵バッテリーで場所を選ばない制作が可能に。Linuxベースの独自OSを採用し、7インチタッチスクリーン、Wifiでの楽曲ダウンロード、プラグイン対応など、現代的な機能を大幅に強化した。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スタイル</label><span>スタンドアロン</span></div>
+          <div class="spec-item"><label>OS</label><span>Linux ベース</span></div>
+          <div class="spec-item"><label>バッテリー</label><span>内蔵対応</span></div>
+          <div class="spec-item"><label>スクリーン</label><span>7インチ タッチ</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Flying Lotus</span>
+            <span class="artist-tag">Madlib</span>
+            <span class="artist-tag">Knxwledge</span>
+            <span class="artist-tag">Kenny Beats</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MPC X 2017 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2017</div>
+        <div class="card-model-name">MPC X</div>
+        <div class="card-tagline">"フラッグシップ・スタンドアロン" — The Mothership</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-x.jpg" alt="AKAI MPC X (2017)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © Akai Professional / DJ TechTools</p>
+        <p class="card-desc">MPC Liveと同時発表されたフラッグシップ機。10.1インチの大型タッチスクリーン、16個のQ-Linkエンコーダー、CV/Gateアウト、充実した入出力を備え、スタジオのコントロールセンターとして機能する究極のスタンドアロンMPC。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スタイル</label><span>スタンドアロン</span></div>
+          <div class="spec-item"><label>スクリーン</label><span>10.1インチ タッチ</span></div>
+          <div class="spec-item"><label>Q-Link</label><span>16エンコーダー</span></div>
+          <div class="spec-item"><label>特記</label><span>CV/Gate出力</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Boi-1da</span>
+            <span class="artist-tag">Hit-Boy</span>
+            <span class="artist-tag">ハイエンド制作者</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+  </div><!-- /timeline 2010s -->
+</div>
+
+<!-- ═══════════════════ 2020s ═══════════════════ -->
+<div class="decade-section" id="s2020">
+  <div class="decade-divider">
+    <div class="decade-bg-num">2020s</div>
+    <div class="decade-label">
+      <span class="decade-num">2020s</span>
+      <span class="decade-desc">新世代。鍵盤統合と次世代スタンドアロンで、MPCはさらなる進化を続ける。</span>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <!-- MPC One 2020 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2020</div>
+        <div class="card-model-name">MPC One</div>
+        <div class="card-tagline">"ベストバランス" — The People's MPC</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-one.jpg" alt="AKAI MPC One (2020)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © Sound On Sound</p>
+        <p class="card-desc">MPC Liveのコンパクト版として登場し、瞬く間に最も人気のMPCとなった。スタンドアロン動作、MPC Liveとほぼ同等の機能を備えながら、コンパクトなフォームファクターと手頃な価格を実現。現代のプロデューサーにとって「最初の一台」として最も推薦される機種。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>スタイル</label><span>スタンドアロン</span></div>
+          <div class="spec-item"><label>スクリーン</label><span>7インチ タッチ</span></div>
+          <div class="spec-item"><label>RAM</label><span>2GB</span></div>
+          <div class="spec-item"><label>ストレージ</label><span>16GB 内蔵</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Kenny Beats</span>
+            <span class="artist-tag">JID</span>
+            <span class="artist-tag">Hit-Boy</span>
+            <span class="artist-tag">新世代全般</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC Key 61 2022 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2022</div>
+        <div class="card-model-name">MPC Key 61</div>
+        <div class="card-tagline">"鍵盤との統合" — Keys Meet Beats</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-key61.jpg" alt="AKAI MPC Key 61 (2022)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © 9to5Toys</p>
+        <p class="card-desc">MPCに61鍵のキーボードを統合した革新的モデル。MPE（MIDI Polyphonic Expression）対応の鍵盤とMPCのパッド操作を一台に融合。スタンドアロンで動作し、シンセサイザー・プラグインをリアルタイム演奏しながらビートを組み上げる、新時代のオールインワン制作環境を実現した。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>鍵盤</label><span>61鍵 MPE対応</span></div>
+          <div class="spec-item"><label>スタイル</label><span>スタンドアロン</span></div>
+          <div class="spec-item"><label>スクリーン</label><span>7インチ タッチ</span></div>
+          <div class="spec-item"><label>プラグイン</label><span>内蔵対応</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">Boi-1da</span>
+            <span class="artist-tag">Murda Beatz</span>
+            <span class="artist-tag">現代プロデューサー全般</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MPC Key 37 2023 -->
+    <div class="model-card" data-animate>
+      <div class="card-left">
+        <div class="card-year">2023</div>
+        <div class="card-model-name">MPC Key 37</div>
+        <div class="card-tagline">"コンパクトな完全体" — The Complete Package</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-key37.jpg" alt="AKAI MPC Key 37 (2023)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © DJ Mag</p>
+        <p class="card-desc">MPC Key 61のコンパクト版として登場。37鍵盤とMPCのパッドを一台に集約し、より持ち運びやすいオールインワン制作環境を実現。デスクスペースが限られるホームスタジオにも最適で、MPC Key 61と同等のスタンドアロン機能、MPE対応鍵盤を搭載する。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>鍵盤</label><span>37鍵 MPE対応</span></div>
+          <div class="spec-item"><label>スタイル</label><span>スタンドアロン</span></div>
+          <div class="spec-item"><label>スクリーン</label><span>7インチ タッチ</span></div>
+          <div class="spec-item"><label>特記</label><span>コンパクト設計</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">使用アーティスト</div>
+          <div class="artist-tags">
+            <span class="artist-tag">現代ビートメイカー</span>
+            <span class="artist-tag">シンガーソングライター</span>
+            <span class="artist-tag">ホームスタジオ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right"></div>
+    </div>
+
+    <!-- MPC Live 3 2025 -->
+    <div class="model-card" data-animate>
+      <div class="card-left"></div>
+      <div class="card-center"><div class="card-dot"></div><div class="card-line"></div></div>
+      <div class="card-right">
+        <div class="card-year">2025</div>
+        <div class="card-model-name">MPC Live III</div>
+        <div class="card-tagline">"最強のスタンドアロン" — The Most Powerful MPC Ever</div>
+        <div class="mpc-photo-wrap">
+          <img src="img/mpc-live3.jpg" alt="AKAI MPC Live III (2025)" loading="lazy">
+        </div>
+        <p class="photo-credit">Photo: © Synth Anatomy</p>
+        <p class="card-desc">歴代MPCで最強のスペックを誇る最新フラッグシップ。8コアプロセッサー（MPC Live IIの4倍の処理能力）、8GB RAM、128GB内蔵ストレージを搭載。新開発の「MPCeパッド」は3Dセンシング技術を採用し、アフタータッチを超えた表現力を実現。16個の専用ステップシーケンサーボタンを新設し、タッチスクリーンなしでのリアルタイム入力が可能に。最大32のプラグインインスタンス、Pro Stems Separation、Super Timetstretchといったデスクトップ級の機能を備え、USB-C経由で24chオーディオ転送にも対応。</p>
+        <div class="card-specs">
+          <div class="spec-item"><label>プロセッサー</label><span>8コア（Live IIの4倍）</span></div>
+          <div class="spec-item"><label>RAM / ストレージ</label><span>8GB / 128GB</span></div>
+          <div class="spec-item"><label>パッド</label><span>MPCe 3Dセンシング</span></div>
+          <div class="spec-item"><label>接続</label><span>USB-C 24ch オーディオ</span></div>
+        </div>
+        <div class="card-artists">
+          <div class="card-artists-label">主な新機能</div>
+          <div class="artist-tags">
+            <span class="artist-tag">3D Sensing Pads</span>
+            <span class="artist-tag">32 Plugin Instances</span>
+            <span class="artist-tag">Pro Stems Separation</span>
+            <span class="artist-tag">Wi-Fi / Bluetooth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline 2020s -->
+</div>
+
+<!-- FINAL HIGHLIGHT -->
+<div style="max-width:1100px; margin: 0 auto 80px; padding: 0 24px;">
+  <div class="highlight-card" data-animate>
+    <div>
+      <div class="hl-eyebrow">35 Years of Innovation</div>
+      <div class="hl-year">MPC</div>
+      <div class="hl-title">1988年から現在へ<br>ビートの未来</div>
+      <p class="hl-desc">35年以上にわたり、AKAI MPCはヒップホップ、R&B、エレクトロニック・ミュージックの発展とともに進化し続けた。単なる機材を超え、クリエイティブな表現の象徴として、世界中のプロデューサーに愛され続けている。</p>
+      <div class="hl-artists">
+        <span class="hl-artist">1988 MPC60</span>
+        <span class="hl-artist">1994 MPC3000</span>
+        <span class="hl-artist">2017 MPC Live</span>
+        <span class="hl-artist">2025 MPC Live III</span>
+      </div>
+    </div>
+    <div class="hl-photo-wrap">
+      <img src="img/mpc-one.jpg" alt="AKAI MPC One" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>AKAI</span> MPC HISTORY</div>
+  <p>1988 — 2025 &nbsp;|&nbsp; Music Production Center の軌跡</p>
+  <br>
+  <p style="font-size:11px;color:#444">本ページは教育・参考目的で制作されたファンサイトです。<br>AKAI Professional は Gibson Brands, Inc. の登録商標です。<br>各写真の著作権は元の著作者に帰属します。</p>
+</footer>
+
+<script>
+// Progress bar
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (window.scrollY / max * 100) + '%';
+}, { passive: true });
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('.decade-section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
